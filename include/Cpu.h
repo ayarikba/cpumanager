@@ -14,10 +14,10 @@
 class Cpu
 {
     public:
+    Cpu();
+    ~Cpu();
+    
     void print_cpu_info();
-
-
-
 
     protected:
 
@@ -25,5 +25,8 @@ class Cpu
 
 
     private:
+    std::string model_name ;
+    short core_count ;
+
 
 };
