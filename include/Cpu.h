@@ -3,6 +3,10 @@
 #include <iostream>
 #include <array>
 #include <fstream>
+#include <thread>
+#include <memory>
+#include <vector>
+#include "Core.h"
 
 #if defined(_MSC_VER)
 #include <intrin.h>
@@ -11,6 +15,8 @@
 #endif
 
 
+
+constexpr const char* INFO_PATH = "/proc/cpuinfo";
 class Cpu
 {
     public:
@@ -18,15 +24,24 @@ class Cpu
     ~Cpu();
     
     void print_cpu_info();
+    int getPhysicalCoreCount();
+    int getCoreCount();
 
     protected:
 
 
 
+    private:
+    int createCores(); 
 
     private:
-    std::string model_name ;
-    short core_count ;
+    std::string vendor;
+    int core_count;
+    int physical_core_count;
+    static constexpr size_t ARRAY_SIZE = 10; // Define a valid size
+    std::vector<std::shared_ptr<Core>> cores;
 
+    private:
+    
 
 };
