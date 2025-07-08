@@ -6,6 +6,8 @@
 #include <thread>
 #include <memory>
 #include <vector>
+#include <set>
+#include <filesystem>
 #include "Core.h"
 
 #if defined(_MSC_VER)
@@ -15,7 +17,8 @@
 #endif
 
 
-
+namespace cpu 
+{
 constexpr const char* INFO_PATH = "/proc/cpuinfo";
 class Cpu
 {
@@ -26,6 +29,7 @@ class Cpu
     void print_cpu_info();
     int getPhysicalCoreCount();
     int getCoreCount();
+    void printCores();
 
     protected:
 
@@ -39,9 +43,11 @@ class Cpu
     int core_count;
     int physical_core_count;
     static constexpr size_t ARRAY_SIZE = 10; // Define a valid size
-    std::vector<std::shared_ptr<Core>> cores;
+    std::vector<std::unique_ptr<Core>> cores;
 
     private:
     
 
 };
+
+}

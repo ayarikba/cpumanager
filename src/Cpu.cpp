@@ -1,9 +1,11 @@
 #include "Cpu.h"
-#include <set>
+
+namespace cpu 
+{
 
 Cpu::Cpu()
 {
-    
+    createCores();
 }
 
 
@@ -46,6 +48,7 @@ int Cpu::getPhysicalCoreCount() {
     while (std::getline(cpuinfo, line)) {
         if (line.find("physical id") != std::string::npos)
             physical_id = line.substr(line.find(":") + 2);
+        
         else if (line.find("core id") != std::string::npos) {
             core_id = line.substr(line.find(":") + 2);
             unique_cores.insert(physical_id + "-" + core_id);
@@ -66,6 +69,15 @@ int Cpu::getCoreCount()
     return core ; 
 }
 
+void Cpu::printCores()
+{
+    for (const auto& core : cores) {
+        std::cout << "Core Index: " << core->getIndex() << std::endl;
+        // std::cout << "Temperature: " << core->getTemperature() << " C" << std::endl;
+        // std::cout << "Max Frequency: " << core->getMaxFreq() << " Hz" << std::endl;
+        // std::cout << "Min Frequency: " << core->getMinFreq() << " Hz" << std::endl;
+    }
+}
 
 int Cpu::createCores()
 {
@@ -73,12 +85,15 @@ int Cpu::createCores()
     while (true) {
         std::string core_path = "/sys/devices/system/cpu/cpu" + std::to_string(core_index);
         if (std::filesystem::exists(core_path)) {
-            Core core_instance(core_index); 
-            cores.push_back(core_instance); 
+            cores.push_back(std::make_unique<Core>(core_path)); 
             core_index++;
         } else {
             break;
         }
     }
+
+    std::cout << "Number of cores created: " << cores.size() << std::endl; 
     return cores.size(); 
+
+}
 }
