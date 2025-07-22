@@ -25,11 +25,16 @@ class Core
     void setMinFreq(uint64_t freq);
     uint64_t getMinFreq() const;
 
+    void change_frequency(int frequency);
+
     protected:
     
 
     private:
     std::string path ;
+    std::string core_max_freq_path ;
+    std::string core_min_freq_path ;
+    std::string core_governor_path ;
     uint32_t index ;
     uint32_t temperature ;
     uint64_t max_freq ; 

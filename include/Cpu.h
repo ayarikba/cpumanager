@@ -30,6 +30,7 @@ class Cpu
     int getPhysicalCoreCount();
     int getCoreCount();
     void printCores();
+    void change_frequency(int freq);
 
     protected:
 

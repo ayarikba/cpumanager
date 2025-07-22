@@ -96,4 +96,12 @@ int Cpu::createCores()
     return cores.size(); 
 
 }
+
+void Cpu::change_frequency(int freq)
+{
+    for (const auto& core : cores)
+        core->change_frequency(freq);
+}
+
+
 }
