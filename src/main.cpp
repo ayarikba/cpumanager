@@ -1,13 +1,12 @@
 #include <iostream>
 #include "Cpu.h"
+#include "mainwindow.h"
+#include <QApplication>
 
-
-int main()
+int main(int argc, char *argv[])
 {
-    std::cout << "hello world" << std::endl ;
-    auto cpu = new cpu::Cpu();
-    //cpu->print_cpu_info();
-    //std::cout << core << std::endl;
-    //std::cout << cpu->getCoreCount() << std::endl ; 
-    cpu->change_frequency(4000000);
+    QApplication a(argc, argv);
+    MainWindow w;
+    w.show();
+    return a.exec();
 }
