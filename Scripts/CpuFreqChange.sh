@@ -1,6 +1,6 @@
 #! /bin/bash
 
-freq=2000000
+freq=1600000
 core_count=0
 scaling_governor="powersave"
 
@@ -31,7 +31,7 @@ change_freq_for_cores() {
         tmp="/sys/devices/system/cpu/cpu${i}"
         ##echo $tmp
         change_freq ${tmp}
-        change_freq_governor_to_powersave ${tmp}
+        # change_freq_governor_to_powersave ${tmp}
     done
 }
 

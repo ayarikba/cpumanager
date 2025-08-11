@@ -16,6 +16,9 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+    void dostuff();
+    enum class GoodThings {Angels, Dab, DepechMode};
+    void doGood(MainWindow::GoodThings which);
 
 private:
     Ui::MainWindow *ui;

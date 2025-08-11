@@ -1,0 +1,4 @@
+#ifndef COMBOBOXHELPER_H
+#define COMBOBOXHELPER_H
+
+#endif // COMBOBOXHELPER_H
