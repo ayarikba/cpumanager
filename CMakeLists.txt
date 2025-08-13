@@ -29,6 +29,10 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         MANUAL_FINALIZATION
         ${PROJECT_SOURCES}
         src/comboboxhelper.h
+        src/signalmanager.h src/signalmanager.cpp
+        src/sliderreader.h src/sliderreader.cpp
+        include/IReader.h
+        src/IReader.cpp
 
     )
 # Define target properties for Android with Qt 6 as:
