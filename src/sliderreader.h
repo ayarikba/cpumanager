@@ -5,7 +5,9 @@
 #include <QWidget>
 #include <IReader.h>
 #include <boost/log/trivial.hpp>
-#include <fstream>39
+#include <fstream>
+#include <string>
+#include <iostream>
 
 /*!
  * \brief The SliderReader class that used as middleware between actual cpu valu and desired val
@@ -13,7 +15,8 @@
 class SliderReader : public IReader
 {
 public:
-    SliderReader();
+    SliderReader(std::string read_path);
+    ~SliderReader();
     bool start_reader() override;
     bool stop_reader()  override;
     void print_all_values();
@@ -26,7 +29,7 @@ private:
     time_t interval ;
     int read_value;
     int desired_value;
-
+    std::ifstream stream;
 
 };
 

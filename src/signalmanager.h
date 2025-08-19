@@ -8,6 +8,7 @@ class SignalManager
 {
 public:
     SignalManager();
+    ~SignalManager();
 };
 
 #endif // SIGNALMANAGER_H
