@@ -8,6 +8,7 @@
 #include <fstream>
 #include <string>
 #include <iostream>
+#include "timer.h"
 
 /*!
  * \brief The SliderReader class that used as middleware between actual cpu valu and desired val
@@ -31,6 +32,12 @@ private:
     int desired_value;
     std::ifstream stream;
 
+
+
+private:
+    std::unique_ptr<Timer> m_timer ;
+    QThread timer_thread ;
+    QThread reader_thread;
 };
 
 #endif // SLIDERREADER_H

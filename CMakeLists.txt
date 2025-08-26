@@ -33,6 +33,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         src/sliderreader.h src/sliderreader.cpp
         include/IReader.h
         src/IReader.cpp
+        include/timer.h
 
     )
 # Define target properties for Android with Qt 6 as:
