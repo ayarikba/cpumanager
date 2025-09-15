@@ -21,6 +21,15 @@ set(PROJECT_SOURCES
     ${CMAKE_CURRENT_SOURCE_DIR}/include/Cpu.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/Core.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/mainwindow.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/Sys.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/IReader.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/signalmanager.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/timer.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/comboboxhelper.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/signalmanager.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/sliderreader.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/IReader.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/IReader.cpp
 )
 
 
@@ -28,13 +37,6 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(CpuManager
         MANUAL_FINALIZATION
         ${PROJECT_SOURCES}
-        src/comboboxhelper.h
-        src/signalmanager.h src/signalmanager.cpp
-        src/sliderreader.h src/sliderreader.cpp
-        include/IReader.h
-        src/IReader.cpp
-        include/timer.h
-
     )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET CpuManager APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR
