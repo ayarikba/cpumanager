@@ -12,17 +12,23 @@ To build a Windows executable (.exe):
 
 ### Prerequisites
 - CMake 3.5 or higher
-- C++ compiler (MSVC, MinGW, or similar)
+- C++ compiler (must match Qt variant):
+  - MSVC 2019 or 2022 for Qt MSVC builds
+  - MinGW for Qt MinGW builds
 - Qt5 or Qt6 development libraries for Windows
 
 ### Build Steps
 
 1. Install Qt for Windows from https://www.qt.io/download
-2. Open CMake GUI or use command line:
+2. Open CMake GUI or use command line (adjust paths to match your Qt installation):
    ```bash
    mkdir build
    cd build
-   cmake .. -G "Your Generator" -DCMAKE_PREFIX_PATH=C:\Qt\6.x\msvc2019_64
+   # For MSVC builds:
+   cmake .. -G "Visual Studio 16 2019" -DCMAKE_PREFIX_PATH=C:\Qt\6.5\msvc2019_64
+   # Or for MinGW builds:
+   cmake .. -G "MinGW Makefiles" -DCMAKE_PREFIX_PATH=C:\Qt\6.5\mingw_64
+   
    cmake --build . --config Release
    ```
 3. The executable `CpuManager.exe` will be created in the build directory
